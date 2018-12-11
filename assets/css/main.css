@@ -1,0 +1,80 @@
+const{
+    color: #f8bf13;
+}
+
+fnc{
+    color: #ff8239;
+}
+
+string{
+    color: #9cf58c
+}
+
+props{
+    color: #73cc6a;
+}
+
+comment{
+    color: #027ed0;
+    text-style: italic;
+}
+
+num{
+    color: #e35970;
+}
+
+temp{
+    color:#f8e57d
+}
+
+.code-area{
+    background-color: #193549;
+    color: #fff;
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0 20px 0px;
+    padding: 10px;
+    border-radius: 10px;
+  
+}  
+
+.text-area{
+    margin: 0 auto;
+    width: 80%;
+}
+
+.text-area h1{
+    text-decoration: underline;
+}
+
+.text-area p{
+    text-align: justify;
+}
+
+pre{
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    text-align: center
+}
+
+.code-area code{
+    background-color: transparent;
+    padding: 5px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.img-holder{
+    position: relative;
+    margin: 0 auto;
+    align-content: center;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.img-holder img{
+    border-radius: 7px;
+}
+

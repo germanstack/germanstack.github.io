@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+    <!--For Plugins external css-->
+    <link rel="stylesheet" href="../assets/css/plugins.css" />
+    <link rel="stylesheet" href="../assets/css/roboto-webfont.css" />
+    <!--Theme custom css -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <!--Theme Responsive css-->
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script src="../assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+    <title>GERMAN Docs</title>
+
+</head>
+
+<body>
+
+    <div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <img src="/assets/images/favicon.png" height="80px" alt="">
+                    <a href="/">
+                        ERMAN STACK
+                    </a>
+                </li>
+                <li>
+                    <a href="#nodejs" id="node-toggler">Node.js</a>
+                    <ul id="node-menu" class="d-none course-menu">
+                        <li>
+                            <a href="#introduction">Introduction</a>
+                        </li>
+                        <li>
+                            <a href="#installation">Installation</a>
+                        </li>
+                        <li>
+                            <a href="#setting-up-node-server">Setting Up Node Server</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" id="react-toggler">React</a>
+                    <ul id="react-menu" class="d-none course-menu">
+                        <li>
+                            <a href="#introduction">Introduction</a>
+                        </li>
+                        <li>
+                            <a href="#installation">Installation</a>
+                        </li>
+                        <li>
+                            <a href="#setting-up-node-server">Setting Up Node Server</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div class="toggler">
+            <a href="#menu-toggle" class="btn" id="menu-toggle"><i class="fa fa-close"></i></a>
+        </div>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="text-area">
+                    <div id="introduction">
+                        <h1>Introduction</h1>
+                        <p>
+                            Node.js is an asynchronous event driven JavaScript runtime, designed to build scalable
+                            network
+                            applications.
+                        </p>
+                        <p>
+                            As an event driven JavaScript runtime, Node takes the event model a bit further in similar
+                            design
+                            to, and influenced by systems like Ruby’s Event Machine or Python’s Twisted. It presents an
+                            event
+                            loop as a runtime construct instead of as a library.
+                        </p>
+                        <p>
+                            There is always a blocking call to start the event-loop. Typically, behavior is defined
+                            through
+                            callbacks at the beginning of the script and at the end, starts a server through a blocking
+                            call.
+                            Unlike Node, they are no such <code>start-the-event-loop</code> call. Node simply enters
+                            the
+                            event loop after
+                            executing the input script, and exist the event loop when they are no more callbacks to
+                            perform.
+                        </p>
+                        <p>
+                            Node  Event-Loop  Executes Input Scripts? More scripts: Leave  Node
+                            This behavior is a lot similar to browser JavaScript – where the event loop is hidden from
+                            the
+                            user.
+                            Node is designed with streaming and low latency in mind, making HTTP a first-class citizen
+                            in
+                            Node.
+                        </p>
+                    </div>
+                    <div id="installation">
+                        <h1>Installation</h1>
+                        <p>
+                            Node is very easy to install. Head over to https://nodejs.org and find the LTS (Long Term
+                            Support) compatible Node.js for your OS.
+                            Check if Node.js has been successfully installed:
+                            <ol type="i">
+                                <li>Open up terminal</li>
+                                <li>Run <code>node version</code> (make sure you’re the latest stable version of
+                                    Node.js)
+                                    Check for existing Node Package Manager
+                                </li>
+                            </ol>
+                        </p>
+
+                        <p>
+                            Usually installation on Windows Machine comes with npm JavaScript runtime package manager.
+                            You can look up installation on https://npmjs.org to see installation steps for your
+                            machine. Installation of npm is very necessary when building Node.js applications.
+                        </p>
+                        <p>
+                            After installation perform the following:
+                            <ol type="i">
+                                <li>
+                                    Create a directory for all Node.js projects (this is not really necessary as node
+                                    is
+                                    installed globally and can run from anyway on your machine) to keep you Node.js
+                                    project in one place.
+                                </li>
+                                <li>
+                                    Create a directory for the project <code>project 101</code>
+                                </li>
+                                <li>
+                                    Create an <code>index.js</code>
+                                </li>
+                                <li>
+                                    Write the following simple, regular JavaScript:
+                                </li>
+                                <br>
+                                <div class="code-area">
+                                    <code>
+                                        <comment>//init a variable</comment>
+                                        <br>
+                                        <const>let</const> counter = <num>0</num>;
+                                        <br>
+                                        <comment>//set interval function</comment>
+                                        <br>
+                                        <fnc>setInterval</fnc>(<fnc>() => </fnc> {
+                                        <br>
+                                        <props>console</props>.<fnc>log</fnc>(counter);
+                                        <br>
+                                        counter++;
+                                        <br>
+                                        }, <comment>/*set interval*/</comment><num>1000</num>);
+                                        <br>
+                                    </code>
+                                </div>
+                                <br>
+                                <li>Launch the terminal, navigate to the project directory and run <code>node index.js</code></li>
+                                <li>Hit <code>CMD + C</code> or <code>CTRL + C</code> to end the process</li>
+                            </ol>
+                        </p>
+                        <p>
+                            Notice the script is the regular day-to-day JavaScript nothing too fancy and nothing
+                            different
+                            from what you already know. Although, Node.js has its little new syntax but nothing
+                            different from codes you already know.
+                        </p>
+                    </div>
+                    <div id="setting-up-node-server">
+                        <h1>Setting Up Node.js Server</h1>
+                        <p> Let’s initialize a Node App and get ready to build a server. NB: Feel free to delete <code>project 101</code>
+                        </p>
+                        <ol type="i">
+                            <li>
+                                Launch the terminal and navigate to the Node.js project folder created earlier in this
+                                doc.
+                            </li>
+                            <li>
+                                Create a folder <code>node-000</code>
+                            </li>
+                            <li>
+                                Run <code>npm init</code>
+                            </li>
+                            <li>
+                                Follow up the guides to create the <code>package.json</code>
+                            </li>
+                            <div class="img-holder">
+                                <img src="./doc-image/terminal.PNG" alt="">
+                                <figcaption>Fig 1.0 <code>npm init</code> in terminal</figcaption>
+                            </div>
+                            <li>
+                                And <code>package.json</code> should look like this:
+                            </li>
+                            <div class="img-holder">
+                                <img src="./doc-image/package-json.PNG" alt="">
+                                <figcaption>Fig 1.1 <code>package.json</code></figcaption>
+                            </div>
+                        </ol>
+
+                        <p>
+                            Congratulations you just initialized your first Node.js App 🚀🎉🎉🎉</p>
+                            <p>
+                            A server is very easy to initialized no xampp, or wampp or any of that sort is required in
+                            Node. Some few lines of codes, with no much configuration you a perfect Node.js server
+                            running at a port of your choice. Let’s follow the step to creating a server:
+                            <ol type="i">
+                                <li>
+                                    Create an <code>index.js</code> in the <code>node-000</code> project folder.
+                                </li>
+                                <li>
+                                    Add the following scripts to create your server:
+                                </li>
+                                <div class="code-area">
+                                    <code>
+                                        <const>const</const> http = <fnc>require</fnc>(<string>"http"</string>);
+                                        <br>
+                                        <comment>//set a hostname</comment>
+                                        <br>
+                                        <const>const</const> hostname = <string>'127.0.0.1'</string>
+                                        <br>
+                                        <comment>//set a port</comment>
+                                        <br>
+                                        <const>const</const> port = <num>3000</num>;
+                                        <br>
+                                        <const>const</const> server = http.<fnc>createServer</fnc>(<fnc>(</fnc>req, res <fnc>) => </fnc>{
+                                            <br>
+                                            <comment><i>//set responses code to 200</i></comment>
+                                            <br>
+                                            res.statusCode = <num>200</num>;
+                                            <br>
+                                            res.<fnc>setHeader</fnc>(<string>'Content-Type', 'text/plain'</string>);
+                                            <br>
+                                            <comment><i>//send a respond</i></comment>
+                                            <br>
+                                            res.<fnc>end</fnc>(<string>'Hello World<num>\n</num>'</string>);
+                                            <br>
+                                        });
+                                        <br>
+                                        <comment><i>//strat up server</i></comment>
+                                        <br>
+                                        server.<fnc>listen</fnc>(port, hostname, <fnc>() => </fnc>{
+                                            <br>
+                                            <comment><i>//log server running to the console</i></comment>
+                                            <br>
+                                            <props>console</props>.<fnc>log</fnc>(<string>`String running at https://</string><temp>${</temp>hostname<temp>}</temp><string>:</string> <temp>${</temp>port<temp>}</temp><string>`</string>);
+                                            <br>
+
+                                        });
+                                    </code>
+                                </div>
+                                <li>Run <code>node index</code> in the terminal</li>
+                                <li>Open the browser and navigate to the <code>http://127.0.0.1:3000.</code> </li>
+                            </ol>
+
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+
+        });
+        $("#side-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        $("#react-toggler").click(function (e) {
+            e.preventDefault();
+            $("#react-menu").toggleClass("d-none");
+            $("#node-menu").addClass("d-none");
+        });
+        $("#node-toggler").click(function (e) {
+            e.preventDefault();
+            $("#node-menu").toggleClass("d-none");
+            $("#react-menu").addClass("d-none");
+
+        });
+
+        let screenSize = {
+            xs: window.matchMedia("(max-width: 767px)"),
+            md: window.matchMedia("(min-width:768px)")
+        }
+        function hiddenToggle(screenSize) {
+            if (screenSize.matches) {
+                $("#wrapper").toggleClass("toggled")
+            }
+        }
+
+        function showToggle(screenSize) {
+            if (screenSize.matches) {
+                $("#wrapper").addClass("toggled")
+            }
+        }
+        hiddenToggle(screenSize.xs);
+        showToggle(screenSize.md);
+
+    </script>
+
+
+
+    <script src="../assets/js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="../assets/js/vendor/bootstrap.min.js"></script>
+
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/modernizr.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</body>
+
+</html>

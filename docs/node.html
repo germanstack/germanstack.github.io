@@ -5,8 +5,20 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GERMAN Node.js</title>
+
+    
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!--For Plugins external css-->
+    <link rel="stylesheet" href="../assets/css/plugins.css" />
+    <link rel="stylesheet" href="../assets/css/roboto-webfont.css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/main.css" />
     <script src="main.js"></script>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
@@ -24,18 +36,20 @@
 </head>
 
 <body>
-    <code>
-        <pre>
-            const fs = require('fs');
-            fs.readFile('./file.md', (err, data) => {
-            if(err)  throw err; 
-                console.log(data); 
-                //runs after file is done reading
-                fs.unlink('./file.md');
-            });
-        </pre>
-
-    </code>
+    <div class="code-area">
+        <code>
+            <pre>
+                <const>const</const> fs = <require>require</require>(<string>"fs"</string>);
+                <const>fs</const>.<require>readFile</require>(<string>'./fild.md'</string>, <const>(</const>err, data<const>) => </const>{
+                <require>if</require>(err) <require>trhow</require> err; 
+                    <console>console</console>.<require>log</require>(data); 
+                   <comment>//runs after file is done reading</comment> 
+                    fs.<require>unlink</require>(<string>'./file.md'</string>);
+                });
+            </pre>
+    
+        </code>
+    </div>
 </body>
 
 </html>
