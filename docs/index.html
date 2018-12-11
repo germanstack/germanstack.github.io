@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <script src="../assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
+
     <title>GERMAN Docs</title>
 
 </head>
@@ -46,7 +47,7 @@
                     <a href="#nodejs" id="node-toggler">Node.js</a>
                     <ul id="node-menu" class="d-none course-menu">
                         <li>
-                            <a href="#introduction">Introduction</a>
+                            <a href="/docs/#introduction">Introduction</a>
                         </li>
                         <li>
                             <a href="#installation">Installation</a>
@@ -399,9 +400,14 @@
                     <div id="package-vs-modules">
                         <h1>Package vs. Module</h1>
                         <p>
-                                A package is a bundle of more than one module grouped together (packaged) in application. In the early part of this course, we initialized a Node app and spent some time in the package.json, we discussed publishing with name and version. Some Node apps can also be considered as a package. We won’t be covering how to build node packages in this edition maybe later courses will. But understand a bundle of module makes up a package. 
-                                A module is a reusable JavaScript file in the application, that must have been exported and made available to other files in your application. 
-                                
+                            A package is a bundle of more than one module grouped together (packaged) in application.
+                            In the early part of this course, we initialized a Node app and spent some time in the
+                            package.json, we discussed publishing with name and version. Some Node apps can also be
+                            considered as a package. We won’t be covering how to build node packages in this edition
+                            maybe later courses will. But understand a bundle of module makes up a package.
+                            A module is a reusable JavaScript file in the application, that must have been exported and
+                            made available to other files in your application.
+
                         </p>
                         <p>Now we've gotten a good introduction let's go ahead in the next course and build a <code>german-todo-app.</code></p>
                     </div>
@@ -412,64 +418,9 @@
     </div>
     <!-- /#wrapper -->
 
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-        $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-
-        });
-        $("#side-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-        $("#react-toggler").click(function (e) {
-            e.preventDefault();
-            $("#react-menu").toggleClass("d-none");
-            $("#node-menu").addClass("d-none");
-        });
-        $("#node-toggler").click(function (e) {
-            e.preventDefault();
-            $("#node-menu").toggleClass("d-none");
-            $("#react-menu").addClass("d-none");
-
-        });
-
-        let screenSize = {
-            xs: window.matchMedia("(max-width: 767px)"),
-            md: window.matchMedia("(min-width:768px)")
-        }
-        function hiddenToggle(screenSize) {
-            if (screenSize.matches) {
-                $("#wrapper").toggleClass("toggled")
-            }
-        }
-
-        function showToggle(screenSize) {
-            if (screenSize.matches) {
-                $("#wrapper").addClass("toggled")
-            }
-        }
-        hiddenToggle(screenSize.xs);
-        showToggle(screenSize.md);
-
-    </script>
-
-
-
     <script src="../assets/js/vendor/jquery-1.11.2.min.js"></script>
     <script src="../assets/js/vendor/bootstrap.min.js"></script>
-
-    <script src="../assets/js/plugins.js"></script>
-    <script src="../assets/js/modernizr.js"></script>
-    <script src="../assets/js/main.js"></script>
-</body>
-
+    <script src="./js/toggle.js"></script>
 </body>
 
 </html>
