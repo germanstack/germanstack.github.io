@@ -47,7 +47,7 @@
                     <a href="#nodejs" id="node-toggler">Node.js</a>
                     <ul id="node-menu" class="d-none course-menu">
                         <li>
-                            <a href="/docs/#introduction">Introduction</a>
+                            <a href="#introduction">Introduction</a>
                         </li>
                         <li>
                             <a href="#installation">Installation</a>
@@ -70,13 +70,22 @@
                     <a href="#" id="react-toggler">Express</a>
                     <ul id="react-menu" class="d-none course-menu">
                         <li>
-                            <a href="#introduction">Introduction</a>
+                            <a href="#express-introduction">Introduction</a>
                         </li>
                         <li>
-                            <a href="#installation">Installation</a>
+                            <a href="#express-installation">Installation</a>
                         </li>
                         <li>
-                            <a href="#setting-up-node-server">Setting Up Node Server</a>
+                            <a href="#node-modules">node-modules</a>
+                        </li>
+                        <li>
+                            <a href="#setting-up-express">Setting Up Express</a>
+                        </li>
+                        <li>
+                            <a href="#express-routing">Routing (HTTP Request Method)</a>
+                        </li>
+                        <li>
+                            <a href="#express-middleware">Middleware Functions</a>
                         </li>
                     </ul>
                 </li>
@@ -109,7 +118,7 @@
             <div class="container-fluid">
                 <div class="text-area">
                     <div id="introduction">
-                        <h1>Introduction</h1>
+                        <h1 class="heading"><i class="fa fa-link"></i> Introduction</h1>
                         <p>
                             Node.js is an asynchronous event driven JavaScript runtime, designed to build scalable
                             network
@@ -144,26 +153,29 @@
                         </p>
                     </div>
                     <div id="installation">
-                        <h1>Installation</h1>
+                        <h1 class="heading"><i class="fa fa-link"></i> Installation</h1>
                         <p>
-                            Node is very easy to install. Head over to https://nodejs.org and find the LTS (Long Term
+                            Node is very easy to install. Head over to <a href="http://nodejs.org">https://nodejs.org</a>
+                            and find the LTS (Long Term
                             Support) compatible Node.js for your OS.
                             Check if Node.js has been successfully installed:
                             <ol type="i">
                                 <li>Open up terminal</li>
-                                <li>Run <code>node version</code> (make sure you’re the latest stable version of
+                                <li>Run <code>node --version</code> (make sure you’re the latest stable version of
                                     Node.js)
-                                    Check for existing Node Package Manager
+                                    Check for existing Node Package Manager <code>npm</code>
                                 </li>
                             </ol>
                         </p>
 
-                        <p>
+                        <p id="npm-installation">
                             Usually installation on Windows Machine comes with npm JavaScript runtime package manager.
-                            You can look up installation on https://npmjs.org to see installation steps for your
-                            machine. Installation of npm is very necessary when building Node.js applications.
+                            You can look up installation on <a href="http://npmjs.org">https://npmjs.org</a> to see
+                            installation steps for your
+                            machine. Installation of <code>npm</code> is very necessary when building Node.js
+                            applications.
                         </p>
-                        <p>
+                        <p id="node-projects">
                             After installation perform the following:
                             <ol type="i">
                                 <li>
@@ -213,7 +225,7 @@
                         </p>
                     </div>
                     <div id="setting-up-node-server">
-                        <h1>Setting Up Node.js Server</h1>
+                        <h1 class="heading"><i class="fa fa-link"></i> Setting Up Node.js Server</h1>
                         <p> Let’s initialize a Node App and get ready to build a server. NB: Feel free to delete <code>project 101</code>
                         </p>
                         <ol type="i">
@@ -300,7 +312,7 @@
                         </p>
                     </div>
                     <div id="package-json">
-                        <h1>package.json</h1>
+                        <h1 class="heading"><i class="fa fa-link"></i> package.json</h1>
                         <p>The <code>package.json</code> a extremely important when building Node Apps. It must be an
                             actual JSON
                             not a JavaScript object literal.</p>
@@ -376,7 +388,7 @@
                         </p>
                     </div>
                     <div id="modules">
-                        <h1>Modules</h1>
+                        <h1 class="heading"><i class="fa fa-link"></i> Modules</h1>
                         <p>You can consider modules to be the same as JavaScript libraries. More like some functions
                             you’d love to have in your application.</p>
                         <h2>Built-in Modules</h2>
@@ -398,7 +410,7 @@
                         </p>
                     </div>
                     <div id="package-vs-modules">
-                        <h1>Package vs. Module</h1>
+                        <h1 class="heading"><i class="fa fa-link"></i> Package vs. Module</h1>
                         <p>
                             A package is a bundle of more than one module grouped together (packaged) in application.
                             In the early part of this course, we initialized a Node app and spent some time in the
@@ -410,6 +422,314 @@
 
                         </p>
                         <p>Now we've gotten a good introduction let's go ahead in the next course and build a <code>german-todo-app.</code></p>
+                    </div>
+                    <!---Node Ends Here-->
+                    <!---Express Starts Here-->
+                    <div id="express-introduction">
+                        <h1 class="heading"><i class="fa fa-link"></i> Express Introduction</h1>
+                        <p>Express is a minimal and flexible Node.js web application framework that provides a robust
+                            set of features for and mobile applications.
+                        </p>
+                        <p>
+                            RESTful API for this application will be developed using Express. Express has a large
+                            library of HTTP utility and middleware at your disposal, creating a production level API
+                            using express is always fun, quick, and easy.
+                        </p>
+                        <p>
+                            With Express’ provision of thin layer fundamental web features, your application
+                            performance is not something to really worry about. Express doesn’t affect or obscure any
+                            Node.js feature you will be using.
+                        </p>
+                    </div>
+                    <div id="express-installation">
+                        <h1 class="heading"><i class="fa fa-link"></i> Installing Express</h1>
+                        <p>
+                            In the next few pages of this course, we’ll be building a <code>german-todo-app</code>. But
+                            to do that,
+                            we need to install some packages (or dependencies NB: packages and dependencies will be
+                            used interchangbly), like <code>express</code>. Installation process is easy,
+                            and straight
+                            forward that you have nothing to worry about. We’ll be using a <a href="#npm-installation">Package
+                                Manager</a> mentioned earlier in this course. Make sure you have the package manager
+                            installed. You can check if the package manager exists by performing the following
+                            commands:
+                        </p>
+                        <ol type="i">
+                            <li>Run <code>npm –version</code></li>
+                            <li>You should see the version of <code>npm</code> running on your machine. </li>
+                        </ol>
+                        <p>
+                            Let’s proceed to installing express. Remember the folder we created earlier for all <a href="#node-projects">Node.js
+                                Projects?</a>
+                            Awesome! Navigate to the folder, and create a folder for this project <code>german-todo-app</code>
+                            Done? Okay! Let’s get to the proper installation and codes:
+                        </p>
+                        <ol type="i">
+                            <li>Run <code>npm init</code> in <code>german-todo-app</code> directory from the terminal.</li>
+                            <li>Run <code>npm install expres</code></li>
+                        </ol>
+                        <p>
+                            Express has been successfully installed. By default, with version npm 5.0+ npm
+                            install adds the module to the dependencies list in the package.json file; with earlier
+                            versions of npm, you must specify the –save option explicitly.
+                        </p>
+                        <ol>
+                            <li>Open up <code>package.json</code> and locate <code>dependencies:</code>, you will
+                                notice express has
+                                been added as a dependency for this application. Which is cool. Earlier we also looked
+                                at
+                                and package.json and discussed some keys in the JSON, <a href="#package-json">read up
+                                    here</a>. </li>
+
+                            <li>
+                                Also notice a folder has been created <code>node-modules</code>. DO NOT Tampere with
+                                this folder.
+                                Don’t try editing any package in there. Messing around with the <code>node-modules</code>
+                                folder can
+                                make your application act really funny, and throw some unexpected behavior.
+                            </li>
+                        </ol>
+                        <p>Breakout Session ⏰⏰<code>node-modules</code>. </p>
+                    </div>
+                    <div id="node-modules">
+                        <h1 class="heading"><i class="fa fa-link"></i> <code>node-modules</code></h1>
+                        <p>Remember when we did an overview of <a href="#package-vs-modules">Modules and Packages</a>?
+                            Awesome! Node.js saves application
+                            dependencies in the node-modules folder dynamically; whenever a npm install or any package
+                            manager runs an installation successfully, the package is automatically saved to the
+                            node-modules folder. This makes it a lot easier to use the package on one single require()
+                            call. The package and all of its modules becomes available for use. </p>
+                    </div>
+                    <div id="setting-up-express">
+                        <h1 class="heading"><i class="fa fa-link"></i> Setting Up Express</h1>
+                        <p>We’ve seen how we created a Node.js server with already existing Node.js modules. But let’s
+                            also looking at doing this with Express:
+                        </p>
+                        <ol type="i">
+                            <li>Create an index.js in the root directory of your project. </li>
+                            <li>Add the following code</li>
+                            <div class="code-area">
+                                <code>
+                                        <p><const>const</const> express = <fnc>require</fnc>(<string>'epress'</string>);</p>
+                                        <p><comment><i>//init express app</i></comment></p>
+                                        <p><const>const</const> app = <fnc>express</fnc>();</p>
+                                        <p><comment><i>//set a port</i></comment></p>
+                                        <p><const>const</const> port = <num>4000</num>;</p>
+                                        <p><comment><i>//set a hostname</i></comment></p>
+                                        <p><const>const</const> hostname = <string>'127.0.0.1'</string>;</p>
+                                        <p>app.<fnc>get</fnc>(<string>'/'</string>, <fnc>(</fnc>req, res <fnc>) => </fnc> {</p>
+                                        <p class="inner">res.<fnc>send</fnc>(<string>'Hello World'</string>);</p>
+                                        <p>});</p>
+                                        <p>app.<fnc>listen</fnc>(port, <fnc>() => </fnc>{</p>
+                                        <p class="inner"><props>console</props>.<fnc>log</fnc>(<string>`Server running at https://</string><temp>${</temp>hostname<temp>}</temp><string>:</string> <temp>${</temp>port<temp>}</temp><string>`</string>);</p>
+                                        <p>});</p>
+                                    </code>
+                            </div>
+                            <li>Run <code>node index</code> in the terminal</li>
+                            <div class="img-holder"><img src="./doc-image/exp-server.PNG" alt="">
+                                <figcaption>Fig</figcaption>
+                            </div>
+                            <li>Congratulations you’ve designed a functional node.js server with Express. 🎉</li>
+                        </ol>
+                        <p id="exp-server-challenge">
+                            Notice in the image above we are making use of <code>npm start</code>
+                        </p>
+                        <h4>💪💪Challenge💪💪</h4>
+                        <p>Your challenge is as follows:</p>
+                        <ol>
+                            <li>Locate <b>“scripts”</b> in <code>package.json</code> </li>
+                            <li>Modify <code>package.json</code> to have a <b>“start”</b> command as shown previously
+                                in the earlier chapter of
+                                this course.
+                            </li>
+                            <li>Ensure you start the server with <code>npm start</code>
+                            </li>
+                            <li>Push the code to a GitHub repo
+                            </li>
+                            <li>
+                                Repo name should be <code>german-todo-app</code>
+                            </li>
+                            <li>
+                                Good Luck. 🏆🏆
+                            </li>
+                        </ol>
+                    </div>
+                    <div id="express-routing">
+                        <h1><i class="fa fa-link"></i>Routing (HTTP Request Methods) </h1>
+                        <p>Routing refers to how an application resolves and responds to a client request at a
+                            particular endpoint, which is a URI (or path) to a specific HTTP request method (GET, POST,
+                            PUT, and so on).
+                        </p>
+                        <p>
+                            A route can have mutiple handler functions, which are executed when the route is
+                            matched.
+                        </p>
+                        <p>A typical express route:</p>
+                        <div class="code-area">
+                            <code>
+                                app.<fnc>METHOD</fnc><const>(</const>URI, HANDLER<const>)</const>;
+                            </code>
+                        </div>
+                        <p>Where:</p>
+                        <ol>
+                            <li><code>app</code> is an instance of express.</li>
+                            <li><code>METHOD</code> is an HTTP request method (get, post, put, etc)</li>
+                            <li><code>URI</code> is a path on the server. </li>
+                            <li> <code>HANDLER</code> the executed behaviour of the route when it's matched.</li>
+                        </ol>
+                        <h4>💪💪Challenge💪💪</h4>
+                        <p>We've written some basic routes in our previous codes.</p>
+                        <ol>
+                            <li>Identify the basic route</li>
+                            <li>Add a simple comment above the code</li>
+                            <li>Commit and push the added comments to the repo.</li>
+                            <li>Good Luck 🏆🏆🏆</li>
+                        </ol>
+                        <p>Now, we understand what routes are, it's safe to add some routes to our <code>german-todo-app</code></p>
+                        <ol>
+                            <li>Create a <code>route</code> folder in the root directory</li>
+                            <li>Create a <code>todo.js</code> file in the <code>route</code> folder</li>
+                            <li>Add the following code to <code>todo.js</code></li>
+                            <div class="code-area">
+                                <code>
+                                    <p><const>const</const> express = <fnc>require</fnc>(<string>'express'</string>);</p>
+                                    <p><const>const</const> route = express.<fnc>Router</fnc>();</p>
+                                    <p>route.<fnc>get</fnc>(<string>'/todo'</string>, <const>(</const>req, res, next<const>) =></const> {</p>
+                                    <p class="inner">res.<fnc>json</fnc>(todo);</p>
+                                    <p>});</p>
+                                </code>
+                            </div>
+                        </ol>
+                        <p>Running the code above will result to no change. First, we need to modify index.js.</p>
+                        <p>Currently <code>index.js</code>:</p>
+                        <ol type="i">
+                            <div class="code-area">
+                                <code>
+                                    <p><const>const</const> express = <fnc>require</fnc>(<string>'epress'</string>);</p>
+                                    <p><comment><i>//init express app</i></comment></p>
+                                    <p><const>const</const> app = <fnc>express</fnc>();</p>
+                                    <p><comment><i>//set a port</i></comment></p>
+                                    <p><const>const</const> port = <num>4000</num>;</p>
+                                    <p><comment><i>//set a hostname</i></comment></p>
+                                    <p><const>const</const> hostname = <string>'127.0.0.1'</string>;</p>
+                                    <p>app.<fnc>get</fnc>(<string>'/'</string>, <fnc>(</fnc>req, res <fnc>) => </fnc> {</p>
+                                    <p class="inner">res.<fnc>send</fnc>(<string>'Hello World'</string>);</p>
+                                    <p>});</p>
+                                    <p>app.<fnc>listen</fnc>(port, <fnc>() => </fnc>{</p>
+                                    <p class="inner"><props>console</props>.<fnc>log</fnc>(<string>`Server running at https://</string><temp>${</temp>hostname<temp>}</temp><string>:</string> <temp>${</temp>port<temp>}</temp><string>`</string>);</p>
+                                    <p>});</p>
+                                </code>
+                            </div>
+                            <li>Replace <code>app.get</code> with the code below:</li>
+                            <div class="code-area"><code>
+                                    <p>app.<fnc>use</fnc>(<string>'/'</string>, <fnc>require</fnc>(<string>'./routes/todo'</string>));</p>
+                            </code></div>
+                            <li>Hit save and restart the server with <code>npm start</code></li>
+                            <li>Open the route in the browser <a href="http://127.0.0.1:4000/todo" target="_blank">http://127.0.0.1:4000/todo</a></li>
+                            <li>Notice we have a <code>ReferenceError: todo is not defined</code></li>
+                            <li>Let's create an array of todos in <code>todo.js</code></li>
+                            <div class="code-area">
+                                <code>
+                                    <p>...</p>
+                                    <p><const>const</const> todo = [{
+                                       <p class="inner">id : <num>1</num>,</p>
+                                       <p class="inner">task: <string>'CLeaning'</string></p>
+                                       <p class="inner">time: <string>'10:00AM'</string></p>
+                                       <p class="inner">done: <num>false</num></p>
+                                    <p>}]</p>
+                                    <p>...</p>
+                                </code>
+                            </div>
+                        </ol>
+                        <h4>💪💪Challenge💪💪</h4>
+                        <ol type="i">
+                            <li>Expand the todo array to have a minimum of <code>10 objects</code></li>
+                            <li>Add sensible comments to the codebase</li>
+                            <li>Commit and push changes to the repo</li>
+                            <li>Good Luck 🏆🏆🏆🏆 </li>
+                        </ol>
+                    </div>
+                    <div id="express-middleware">
+                        <h1>Middleware Functions</h1>
+                        <p>We've successfully added some working codes, but we barely understand what's going on.
+                            '🙄🤷‍🤦‍️' Happy it's working.😁😁
+                        </p>
+                        <p>Review the codes:</p>
+                        <ol>
+                            <li><code>app.use()</code></li>
+                            <li><code>route.get('/', (req, res, next))</code></li>
+                        </ol>
+                        <p>All these to us now are jargons!</p>
+                        <p>Understanding middlewares will give us a grasp on the codes. First, what's a <b>Middleware
+                                Function?</b></p>
+                        <p>
+                            <i>Middleware Funcitons:</i> are functions that have access to the request
+                            object (<code>req</code>), the response object(<code>res</code>), and the <code>next</code>
+                            function <i>(in the application’s
+                                request-response cycle)</i>.
+                        </p>
+                        <p>Middleware functions can perform the following task</p>
+                        <ol type="i">
+                            <li>Execute any code.
+                            </li>
+                            <li>Make changes to the request and the response objects.
+                            </li>
+                            <li>End the request-response cycle.
+                            </li>
+                            <li>Call the next middle in the stack.
+                            </li>
+                        </ol>
+                        <h3>The <code>next()</code> Function</h3>
+                        <p>Is a function in the Express router which, when invoked, executes the
+                            middleware succeeding the current middleware. </p>
+                        <p>
+                            If the current middleware function does not end a <code>request-response cycle</code>, it
+                            must call <code>next()</code>
+                            to pass control to the next middleware function. Where this fails the request will be left
+                            hanging.
+                        </p>
+
+                        <p>With the defintions of <code>middleware functions</code> we now know <code>app.get</code> is
+                            a middleware function, because it has access to the <code>(req, res)</code> objects, and
+                            the <code>next</code> function.
+                            <code>next</code> can be anything, but by convention <code>next</code> is commonly used.
+                        </p>
+                        <p>A middeleware also acts as a bridge between an operating system or database and
+                            applications, especially on a network. <code>app.use</code> is a bridge a between our
+                            routes and the application.</p>
+                        <p>Earlier, the routes were not exposed when we first created them in <code>todo.js</code>,
+                            that's because we needed a brigde between the root app in the <code>index.js</code> file
+                            and our routes in
+                            <code>todo.js</code> so, we implemented <code>app.use</code> and required our routes.</p>
+                        <p>In other words, <code>app.use()</code> acts as a bridge between a middleware function and
+                            the application request-response cycle.</p>
+                        <div id="more-routes">
+                            <h1>Addng More Request</h1>
+                            Let's add a <code>post, put, and delete</code> request. And some more middleware bridges in
+                            the root app.
+                            Install some dependencies before we proceed.
+                            <ol>
+                                <li>Run <code>npm i body-parser lodash</code></li>
+                                <li>After a successful installation, modify the following codes:</li>
+                                <p><b>require dependencies</b></p>
+                                <div class="code-area">
+                                    <code>
+                                        <p><const>const</const> express = <fnc>require</fnc>(<string>'express'</string>);</p>
+                                        <p><const>const</const> _ = <fnc>require</fnc>(<string>'lodash'</string>);</p> 
+                                        <p><const>const</const> route = express.<code>Router</code>();</p>
+                                    </code>
+                                </div>
+                                <div class="code-area"><code>
+                                        <p>route.<fnc>get</fnc>(<string>'/todo'</string>, <fnc>(</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                            <p class="inner">try{</p>
+                                            <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
+                                            <p class="inner">}catch(err){</p>
+                                            <p class="inner-1"><fnc>next</fnc>(err);</p>
+                                            <p class="inner">}</p>
+                                        });                                       
+                                </code></div>
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>

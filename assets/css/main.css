@@ -46,9 +46,30 @@ temp{
 .text-area h1{
     text-decoration: underline;
 }
+.text-area h1>i{
+   font-size: 30px;
+   color: #027ed0
+}
+
+.text-area h4{
+    font-weight: 600;
+}
 
 .text-area p{
     text-align: justify;
+}
+
+.code-area code>p{
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+.code-area code>p.inner{
+    padding-left:25px; 
+}
+
+.code-area code>p.inner-1{
+    margin-left:40px; 
 }
 
 pre{
