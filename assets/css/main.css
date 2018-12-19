@@ -45,12 +45,11 @@ temp{
 
 .text-area h1{
     text-decoration: underline;
+    margin-bottom: 1.5rem;
 }
 .text-area h1>i{
-   font-size: 30px;
    color: #027ed0
 }
-
 .text-area h4{
     font-weight: 600;
 }
