@@ -87,6 +87,12 @@
                         <li>
                             <a href="#express-middleware">Middleware Functions</a>
                         </li>
+                        <li>
+                            <a href="#express-error-handling">Express Error Handling</a>
+                        </li>
+                        <li>
+                            <a href="#summary">Summary</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -143,7 +149,7 @@
                             perform.
                         </p>
                         <p>
-                            Node  Event-Loop  Executes Input Scripts? More scripts: Leave  Node
+                            Node 👉 Event-Loop  👉  Executes Input Scripts  👉 <code>if</code>(More scripts) Execute Scripts <code>else</code> Leave Node
                             This behavior is a lot similar to browser JavaScript – where the event loop is hidden from
                             the
                             user.
@@ -679,39 +685,48 @@
                             <li>Call the next middle in the stack.
                             </li>
                         </ol>
-                        <h3>The <code>next()</code> Function</h3>
-                        <p>Is a function in the Express router which, when invoked, executes the
-                            middleware succeeding the current middleware. </p>
-                        <p>
-                            If the current middleware function does not end a <code>request-response cycle</code>, it
-                            must call <code>next()</code>
-                            to pass control to the next middleware function. Where this fails the request will be left
-                            hanging.
-                        </p>
+                        <div id="next-function">
+                            <h3>The <code>next()</code> Function</h3>
+                            <p>Is a function in the Express router which, when invoked, executes the
+                                middleware succeeding the current middleware. </p>
+                            <p>
+                                If the current middleware function does not end a <code>request-response cycle</code>,
+                                it
+                                must call <code>next()</code>
+                                to pass control to the next middleware function. Where this fails the request will be
+                                left
+                                hanging.
+                            </p>
 
-                        <p>With the defintions of <code>middleware functions</code> we now know <code>app.get</code> is
-                            a middleware function, because it has access to the <code>(req, res)</code> objects, and
-                            the <code>next</code> function.
-                            <code>next</code> can be anything, but by convention <code>next</code> is commonly used.
-                        </p>
-                        <p>A middeleware also acts as a bridge between an operating system or database and
-                            applications, especially on a network. <code>app.use</code> is a bridge a between our
-                            routes and the application.</p>
-                        <p>Earlier, the routes were not exposed when we first created them in <code>todo.js</code>,
-                            that's because we needed a brigde between the root app in the <code>index.js</code> file
-                            and our routes in
-                            <code>todo.js</code> so, we implemented <code>app.use</code> and required our routes.</p>
-                        <p>In other words, <code>app.use()</code> acts as a bridge between a middleware function and
-                            the application request-response cycle.</p>
+                            <p>With the defintions of <code>middleware functions</code> we now know <code>app.get</code>
+                                is
+                                a middleware function, because it has access to the <code>(req, res)</code> objects,
+                                and
+                                the <code>next</code> function.
+                                <code>next</code> can be anything, but by convention <code>next</code> is commonly
+                                used.
+                            </p>
+                            <p>A middeleware also acts as a bridge between an operating system or database and
+                                applications, especially on a network. <code>app.use</code> is a bridge a between our
+                                routes and the application.</p>
+                            <p>Earlier, the routes were not exposed when we first created them in <code>todo.js</code>,
+                                that's because we needed a brigde between the root app in the <code>index.js</code>
+                                file
+                                and our routes in
+                                <code>todo.js</code> so, we implemented <code>app.use</code> and required our routes.</p>
+                            <p>In other words, <code>app.use()</code> acts as a bridge between a middleware function
+                                and
+                                the application request-response cycle.</p>
+                        </div>
                         <div id="more-routes">
-                            <h1>Addng More Request</h1>
+                            <h1>Adding More Request</h1>
                             Let's add a <code>post, put, and delete</code> request. And some more middleware bridges in
                             the root app.
                             Install some dependencies before we proceed.
                             <ol>
                                 <li>Run <code>npm i body-parser lodash</code></li>
                                 <li>After a successful installation, modify the following codes:</li>
-                                <p><b>require dependencies</b></p>
+                                <li><code>require</code> dependencies</li>
                                 <div class="code-area">
                                     <code>
                                         <p><const>const</const> express = <fnc>require</fnc>(<string>'express'</string>);</p>
@@ -719,17 +734,223 @@
                                         <p><const>const</const> route = express.<code>Router</code>();</p>
                                     </code>
                                 </div>
-                                <div class="code-area"><code>
+                                <!-- todo/ GET -->
+                                <li><code>GET /todo</code></li>
+                                <div class="code-area">
+                                    <code>
                                         <p>route.<fnc>get</fnc>(<string>'/todo'</string>, <fnc>(</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                            <p><comment><i>//</i></comment></p>
                                             <p class="inner">try{</p>
                                             <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
                                             <p class="inner">}catch(err){</p>
                                             <p class="inner-1"><fnc>next</fnc>(err);</p>
                                             <p class="inner">}</p>
-                                        });                                       
+                                       <p>});</p>                                       
+                                    </code>
+                                </div>
+                                <!-- todo/:id -->
+                                <li><code>GET /todo/:id</code></li>
+                                <div class="code-area">
+                                    <code>
+                                        <p>route.<fnc>get</fnc>(<string>'/todo/:id'</string>, <fnc>async (</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                            <p><comment><i>//</i></comment></p>
+                                            <p class="inner">try{</p>
+                                                <p class="inner-1"><const>const</const> todosById <fnc>= await  _.filter</fnc>(todo, {id : <fnc>parseInt</fnc>(req.params.id)});</p>
+                                                <p class="inner-1"><fnc>if</fnc>(todosById.<string>length</string> <fnc><=</fnc> <num>1</num>){</p>
+                                                    <p class="inner-2"><fnc> throw new Error</fnc>(<string>`Check id</string><temp>${</temp>req.params.id <temp>}</temp><string>`</string>)</p>
+                                                    <p class="inner-1">}</p>
+                                            <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
+                                            <p class="inner">}catch(err){</p>
+                                            <p class="inner-1"><fnc>next</fnc>(err);</p>
+                                            <p class="inner">}</p>
+                                       <p>});</p>                                       
+                                    </code>
+                                </div>
+                                <li><code>POST /todo</code></li>
+                                <div class="code-area">
+                                    <code>
+                                        <p>route.<fnc>post</fnc>(<string>'/todo'</string>, <fnc>(</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                            <p><comment><i>//</i></comment></p>
+                                            <p class="inner">try{</p>
+                                                <p class="inner-1"><const>const</const> newTodo <fnc>= await  _.concat</fnc>(todo, req.body);</p>
+                                                <p class="inner-1"><fnc>if</fnc>(!newTodo){</p>
+                                                    <p class="inner-2"><fnc> throw new Error</fnc>(<string>`Failed to add`</string>)</p>
+                                                    <p class="inner-1">}</p>
+                                            <p class="inner-1">res<fnc>.json</fnc>(newTodo);</p>
+                                            <p class="inner">}catch(err){</p>
+                                            <p class="inner-1"><fnc>next</fnc>(err);</p>
+                                            <p class="inner">}</p>
+                                       <p>});</p>                                       
+                                    </code>
+                                </div>
+                                <li><code>PUT /todo/:id</code></li>
+                                <div class="code-area">
+                                    <code>
+                                        <p>route.<fnc>put</fnc>(<string>'/todo/:id'</string>, <fnc>async (</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                            <p><comment><i>//</i></comment></p>
+                                            <p class="inner">try{</p>
+                                                <p class="inner-1"><const>const</const> todosById <fnc>= await _.findIndex</fnc>(todo, {id : <fnc>parseInt</fnc>(req.params.id)});</p>
+                                                <p class="inner-1"><fnc>if</fnc>(index <fnc>===</fnc> <num>-1</num>){</p>
+                                                    <p class="inner-2"><fnc> throw new Error</fnc>(<string>`Invalid id: </string><temp>${</temp>req.params.id <temp>}</temp><string>`</string>)</p>
+                                                    <p class="inner-1">}</p>
+                                                    <p class="inner-1">todo[index] <num>=</num> req.body;</p>
+                                            <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
+
+                                            <p class="inner">}catch(err){</p>
+                                            <p class="inner-1"><fnc>next</fnc>(err);</p>
+                                            <p class="inner">}</p>
+                                       <p>});</p>                                       
+                                    </code>
+                                </div>
+                                <li><code>DELETE /todo/:id</code></li>
+                                <div class="code-area">
+                                    <code>
+                                        <p>route.<fnc>delete</fnc>(<string>'/todo/:id'</string>, <fnc>async (</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                            <p><comment><i>//</i></comment></p>
+                                            <p class="inner">try{</p>
+                                                <p class="inner-1"><fnc>await _.remove</fnc>(todo, {id : <fnc>parseInt</fnc>(req.params.id)});</p>
+                                            <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
+
+                                            <p class="inner">}catch(err){</p>
+                                            <p class="inner-1"><fnc>next</fnc>(err);</p>
+                                            <p class="inner">}</p>
+                                       <p>});</p>                                       
+                                    </code>
+                                </div>
+                                <li><code>export module</code></li>
+                                <div class="code-area"><code>
+                                    <props>module.exports</props> <num>=</num> route;
                                 </code></div>
                             </ol>
                         </div>
+                        <div id="test-routes">
+                            <h4>Testing Our Routes</h4>
+                            <p>To check if all we've done works, we need one extra installation. PostMan, is highly
+                                recommended for testing APIs, it ease testing out <code>post, put, and delete</code>request.</p>
+                            <ol>
+                                <li>Install PostMan</li>
+                            </ol>
+                            <p>The interface is quite easy to understand. You can read up the docs to help you get
+                                started.
+                                When you are a little bit comforatable with the docs, restart the server and test the
+                                API we designed.</p>
+                        </div>
+                    </div>
+                    <div id="middleware-and-handlers">
+                        <h1>Middleware Functions and Handlers</h1>
+                        <p>With our knowledge of <i>Middleware Functions</i> building custom handlers, and middleware
+                            functions will be piece of cake. The concept behind middleware functions, that you should
+                            understand is Middleware Functions, are just function. Handlers, are functions designed to
+                            perform a specific task. </p>
+                        <p>Will be creating middleware functions with handlers to perform specific task e.g. Error
+                            handling, Log handling, and etc.</p>
+                        <p>The code below depicts a handler in a middleware function. </p>
+                        <div class="code-area"><code>app.<fnc>use</fnc>(someHanlder)</code></div>
+                    </div>
+                    <div id="express-error-handling">
+                        <h1>Error Handling in Express</h1>
+                        <p>This refers to how Express catches and processes errors that occurs both synchronously
+                            and
+                            asynchronously. </p>
+                        <p>Express comes with a default error handler, that you don’t necessarily need to write
+                            your own error handler to get started. The built-in error handler takes care of any
+                            error that may occur in the application. This default error-handling middleware
+                            function is added at the end of the middleware function stack. </p>
+                        <p>Using the <code>next()</code> to pass errors, you may not any custom error handler.
+                            Errors
+                            will be handled by the built-in error-handler; the error will be written to the client
+                            with the stack trace. </p>
+                        <p>This stack trace are not included in productions, so even if a the <code>next()</code>
+                            is
+                            called with error after you’ve started writing the response (for example, if you
+                            encounter an error while sending a response across to a client) the Express default
+                            error handler closes the connection and fails the request AKA the application goes
+                            bazooka! Crashes. </p>
+                        <p>In this scenario, custom error handler becomes extremely important. We don’t want
+                            applications going nuts in production. In a custom error handler, you must delegate to
+                            the default Express error handler, when the errors have already been sent to the
+                            client. </p>
+                        <p>Like every we’ve written, has three (3) arguments. Defining error-handlers requires
+                            four (4) argument instead of three(3) <code>(err, req, res, next)</code></p>
+                        <p>Let’s add some code to our <code>index.js</code></p>
+                        <div class="code-area">
+                            <code>
+                                        <p>....</p>
+                                        <comment><i>//hanlder function</i></comment>
+                                        <p>function <fnc>errorHandler(</fnc>err, req, res, next<fnc>){</fnc></p>
+                                            <p class="inner-1"><props>console</props>.<fnc>error</fnc>(err.stack)</p>
+                                            <p class="inner-1"> res.<const>status(<num>500</num>)</const>.<fnc>send</fnc>({</p>
+                                                <p class="inner-2"><string>error : </string> err.message</p>
+                                                <p class="inner-1">});</p>
+                                                <p class="inner-1"><fnc>next</fnc>(err);</p>
+                                        <p>}</p>
+                                        <p><comment><i>//milddware function</i></comment></p>
+                                        <p>app.<fnc>use</fnc>(errorHandler);</p>
+                                        ......
+                                    </code>
+                        </div>
+                        <p>Responses from within a middleware function can be in any format, such as an HTML error
+                            page, a simple message, or a JSON string. </p>
+                        <p>Note:</p>
+                        <ol type="i">
+                            <li>The default error handler can get triggered if you call <code>next()</code> with an
+                                error in your code more than once, even if custom error handling middleware is in
+                                place. </li>
+                            <li>You define error-handling middleware last, after other <code>app.use()</code> and
+                                routes calls.</li>
+                        </ol>
+                        <p>Try out your codes and ensure nothing is breaking or acting freaking funny.</p>
+                    </div>
+                    <div id="summary">
+                        <h1>Summary</h1>
+                        <p>So far we've learnt a lot and have crossed from being a novice Node.js developer,
+                            to a beginner who understands concept not just a coder. Know this, remembering the syntax
+                            isn't really neccessary
+                            but understanding the concept and what is, and who is? That's what makes you an awesome
+                            developer.
+                        </p>
+                        <p>Before we dot our 'i' and cross out 't(s)'. Let's make the API we've designed
+                            available for consumption.
+                        </p>
+                        <p>Follow the steps and further explanation will done later in this course.</p>
+                        <ol>
+                            <li><code>npm install cors</code></li>
+                            <li>Modify <code>index.js</code> to have the following codes: </li>
+                            <div class="code-area"><code>
+                                <p>...</p>
+                                <p><comment><i>//require dependencies</i></comment></p>
+                                <p><const>const</const> cors = <fnc>require</fnc>(<string>'cors'</string>)</p>
+                                <p><const>const</const> bodyParser = <fnc>require</fnc>(<string>'bodyParser'</string>)</p>
+                                <p><comment><i>//cors options</i></comment></p>
+                                <p><const>let</const> corsOptions <fnc>=</fnc> {</p>
+                                    <p class="inner-1"><props>origin :</props> <string>"*"</string>,</p>
+                                    <p class="inner-1"><props>optionSuccessStatus :</props> <num>200</num></p>
+                                <p>}</p>
+                                <p><comment><i>//cors middleware function</i></comment></p>
+                                <p>app.<fnc>use</fnc>(<fnc>cors</fnc>(corsOptions));</p>
+                                <p><comment><i>//json parser middleware function for [POST, PUT, DElETE] </i></comment></p>
+                                <p>app.<fnc>use</fnc>(bodyParser.<fnc>json</fnc>());</p>
+                                <p>app.<fnc>use</fnc>(express.<fnc>urlencoded</fnc>({<props>extended : <num>false</num></props>}));</p>
+                                <p><comment><i>//errorHandler middleware function</i></comment></p>
+                                <p>app.<fnc>use</fnc>(errorHandler);</p>
+                                <p>....</p>
+                            </code></div>
+                        </ol>
+                        <h4>🏋️‍🏋️‍Challenge🏋️‍🏋️‍</h4>
+                        <p>Using <code>fetch API</code></p>
+                        <ol>
+                            <li>Design a static <code>HTML, CSS, JS</code> client side webpage</li>
+                            <li>Use JavaScript <code>fetch api</code> to call the endpoints</li>
+                            <ol type="i">
+                                <li>Render the data from the API</li>
+                                <li>Add todos to the API</li>
+                                <li>Edit todos and also delete todos</li>
+                            </ol>
+                            <li>Ensure to add proper comments in the: <code>HTML, CSS, and JS</code> files.</li>
+                            <li>Commit and push the codes to <code>german-todo-app</code> repo created earlier in this course.</li>
+                            <li>Good Luck 🏆🏆🏆🏆🏆</li>
+                        </ol>
+
                     </div>
                 </div>
             </div>

@@ -1,0 +1,20 @@
+<const></const>
+<fnc></fnc>
+<string></string>
+<num></num>
+<p><comment><i>//</i></comment></p>
+<p class="inner">try{</p>
+    <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
+    <p>route.<fnc>get</fnc>(<string>'/todo'</string>, <fnc>(</fnc>req, res, next<fnc>) =></fnc> {</p>
+        <p><comment><i>//</i></comment></p>
+        <p class="inner">try{</p>
+        <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
+        <p class="inner">}catch(err){</p>
+        <p class="inner-1"><fnc>next</fnc>(err);</p>
+        <p class="inner">}</p>
+   <p>});</p>   
+
+
+   <p class="inner-1"><const>const</const> todosById <fnc>= await  _.filter</fnc>(todo, {id : <fnc>parseInt</fnc>(req.params.id)});</p>
+   <p><fnc>if</fnc>(todosById.<string>length</string> <fnc><=</fnc> <num>1</num>){</p>
+    <p class="inner-2"><fnc> throw new Error</fnc>(<string>`Check id</string><temp>${</temp>req.params.id <temp>}</temp><string>`</string>)</p>

@@ -59,6 +59,19 @@ temp{
     text-align: justify;
 }
 
+.code-area{
+    max-height: 200px;
+    overflow: auto;
+}
+
+.code-area.h-sm{
+    height: 95px;
+}
+
+.code-area.h-xs{
+    height: 20px;
+}
+
 .code-area code>p{
     font-size: 15px;
     margin-bottom: 2px;
@@ -69,7 +82,10 @@ temp{
 }
 
 .code-area code>p.inner-1{
-    margin-left:40px; 
+    padding-left: 65px;
+}
+.code-area code>p.inner-2{
+    padding-left: 107px;
 }
 
 pre{
@@ -99,3 +115,36 @@ pre{
     border-radius: 7px;
 }
 
+
+
+/* Scrollbar */
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 1px;
+    width: 344px;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #106093;
+    border-radius: 2px;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4660d9;
+}
