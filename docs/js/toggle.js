@@ -8,16 +8,24 @@ window.onload = function(){
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-    $("#react-toggler").click(function (e) {
+    $("#express-toggler").click(function (e) {
         e.preventDefault();
-        $("#react-menu").toggleClass("d-none");
+        $("#express-menu").toggleClass("d-none");
         $("#node-menu").addClass("d-none");
+        $("#mongodb-menu").addClass("d-none");
+        
     });
     $("#node-toggler").click(function (e) {
         e.preventDefault();
         $("#node-menu").toggleClass("d-none");
-        $("#react-menu").addClass("d-none");
-    
+        $("#express-menu").addClass("d-none");
+        $("#mongodb-menu").addClass("d-none");
+    });
+    $("#mongodb-toggler").click(function (e) {
+        e.preventDefault();
+        $("#mongodb-menu").toggleClass("d-none");
+        $("#express-menu").addClass("d-none");
+        $("#node-menu").addClass("d-none");
     });
     
     let screenSize = {
