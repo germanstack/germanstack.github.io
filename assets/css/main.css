@@ -58,6 +58,13 @@ temp{
     text-align: justify;
 }
 
+.text-area h2.underline{
+    text-decoration: underline;
+}
+#mongodb-documents h5{
+    font-weight: 600
+}
+
 .code-area{
     max-height: 200px;
     overflow: auto;
