@@ -110,6 +110,15 @@
                         <li>
                             <a href="#using-mongodb-mongoose">CRUD Operation</a>
                         </li>
+                        <li>
+                            <a href="#mongoose-schema">Schemas</a>
+                        </li>
+                        <li>
+                            <a href="#mongoose-schema-types">SchemaTypes</a>
+                        </li>
+                        <li>
+                            <a href="#mongoose-models">Models</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -758,11 +767,11 @@
                                     <code>
                                         <p>route.<fnc>get</fnc>(<string>'/todo'</string>, <fnc>(</fnc>req, res, next<fnc>) =></fnc> {</p>
                                             <p><comment><i>//</i></comment></p>
-                                            <p class="inner">try{</p>
-                                            <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
-                                            <p class="inner">}catch(err){</p>
-                                            <p class="inner-1"><fnc>next</fnc>(err);</p>
-                                            <p class="inner">}</p>
+                                            <p class="indent-1">try{</p>
+                                            <p class="indent-2">res<fnc>.json</fnc>(todo);</p>
+                                            <p class="indent-1">}catch(err){</p>
+                                            <p class="indent-3"><fnc>next</fnc>(err);</p>
+                                            <p class="indent-1">}</p>
                                        <p>});</p>                                       
                                     </code>
                                 </div>
@@ -772,15 +781,15 @@
                                     <code>
                                         <p>route.<fnc>get</fnc>(<string>'/todo/:id'</string>, <fnc>async (</fnc>req, res, next<fnc>) =></fnc> {</p>
                                             <p><comment><i>//</i></comment></p>
-                                            <p class="inner">try{</p>
-                                                <p class="inner-1"><const>const</const> todosById <fnc>= await  _.filter</fnc>(todo, {id : <fnc>parseInt</fnc>(req.params.id)});</p>
-                                                <p class="inner-1"><fnc>if</fnc>(todosById.<string>length</string> <fnc><=</fnc> <num>1</num>){</p>
-                                                    <p class="inner-2"><fnc> throw new Error</fnc>(<string>`Check id</string><temp>${</temp>req.params.id <temp>}</temp><string>`</string>)</p>
-                                                    <p class="inner-1">}</p>
-                                            <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
-                                            <p class="inner">}catch(err){</p>
-                                            <p class="inner-1"><fnc>next</fnc>(err);</p>
-                                            <p class="inner">}</p>
+                                            <p class="indent-1">try{</p>
+                                                <p class="indent-2"><const>const</const> todosById <fnc>= await  _.filter</fnc>(todo, {id : <fnc>parseInt</fnc>(req.params.id)});</p>
+                                                <p class="indent-2"><fnc>if</fnc>(todosById.<string>length</string> <fnc><=</fnc> <num>1</num>){</p>
+                                                    <p class="indent-1"><fnc> throw new Error</fnc>(<string>`Check id</string><temp>${</temp>req.params.id <temp>}</temp><string>`</string>)</p>
+                                                    <p class="indent-2">}</p>
+                                            <p class="indent-2">res<fnc>.json</fnc>(todo);</p>
+                                            <p class="indent-1">}catch(err){</p>
+                                            <p class="indent-3"><fnc>next</fnc>(err);</p>
+                                            <p class="indent-2">}</p>
                                        <p>});</p>                                       
                                     </code>
                                 </div>
@@ -789,15 +798,15 @@
                                     <code>
                                         <p>route.<fnc>post</fnc>(<string>'/todo'</string>, <fnc>(</fnc>req, res, next<fnc>) =></fnc> {</p>
                                             <p><comment><i>//</i></comment></p>
-                                            <p class="inner">try{</p>
-                                                <p class="inner-1"><const>const</const> newTodo <fnc>= await  _.concat</fnc>(todo, req.body);</p>
-                                                <p class="inner-1"><fnc>if</fnc>(!newTodo){</p>
-                                                    <p class="inner-2"><fnc> throw new Error</fnc>(<string>`Failed to add`</string>)</p>
-                                                    <p class="inner-1">}</p>
-                                            <p class="inner-1">res<fnc>.json</fnc>(newTodo);</p>
-                                            <p class="inner">}catch(err){</p>
-                                            <p class="inner-1"><fnc>next</fnc>(err);</p>
-                                            <p class="inner">}</p>
+                                            <p class="indent-1">try{</p>
+                                                <p class="indent-2"><const>const</const> newTodo <fnc>= await  _.concat</fnc>(todo, req.body);</p>
+                                                <p class="indent-2"><fnc>if</fnc>(!newTodo){</p>
+                                                    <p class="indent-3"><fnc> throw new Error</fnc>(<string>`Failed to add`</string>)</p>
+                                                    <p class="indent-2">}</p>
+                                            <p class="indent-2">res<fnc>.json</fnc>(newTodo);</p>
+                                            <p class="indent-2">}catch(err){</p>
+                                            <p class="indent-3"><fnc>next</fnc>(err);</p>
+                                            <p class="indent-2">}</p>
                                        <p>});</p>                                       
                                     </code>
                                 </div>
@@ -806,17 +815,17 @@
                                     <code>
                                         <p>route.<fnc>put</fnc>(<string>'/todo/:id'</string>, <fnc>async (</fnc>req, res, next<fnc>) =></fnc> {</p>
                                             <p><comment><i>//</i></comment></p>
-                                            <p class="inner">try{</p>
-                                                <p class="inner-1"><const>const</const> todosById <fnc>= await _.findIndex</fnc>(todo, {id : <fnc>parseInt</fnc>(req.params.id)});</p>
-                                                <p class="inner-1"><fnc>if</fnc>(index <fnc>===</fnc> <num>-1</num>){</p>
-                                                    <p class="inner-2"><fnc> throw new Error</fnc>(<string>`Invalid id: </string><temp>${</temp>req.params.id <temp>}</temp><string>`</string>)</p>
-                                                    <p class="inner-1">}</p>
-                                                    <p class="inner-1">todo[index] <num>=</num> req.body;</p>
-                                            <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
+                                            <p class="indent-1">try{</p>
+                                                <p class="indent-2"><const>const</const> todosById <fnc>= await _.findIndex</fnc>(todo, {id : <fnc>parseInt</fnc>(req.params.id)});</p>
+                                                <p class="indent-2"><fnc>if</fnc>(index <fnc>===</fnc> <num>-1</num>){</p>
+                                                    <p class="indent-3"><fnc> throw new Error</fnc>(<string>`Invalid id: </string><temp>${</temp>req.params.id <temp>}</temp><string>`</string>)</p>
+                                                    <p class="indent-2">}</p>
+                                                    <p class="indent-2">todo[index] <num>=</num> req.body;</p>
+                                            <p class="indent-2">res<fnc>.json</fnc>(todo);</p>
 
-                                            <p class="inner">}catch(err){</p>
-                                            <p class="inner-1"><fnc>next</fnc>(err);</p>
-                                            <p class="inner">}</p>
+                                            <p class="indent-2">}catch(err){</p>
+                                            <p class="indent-3"><fnc>next</fnc>(err);</p>
+                                            <p class="indent-2">}</p>
                                        <p>});</p>                                       
                                     </code>
                                 </div>
@@ -825,13 +834,13 @@
                                     <code>
                                         <p>route.<fnc>delete</fnc>(<string>'/todo/:id'</string>, <fnc>async (</fnc>req, res, next<fnc>) =></fnc> {</p>
                                             <p><comment><i>//</i></comment></p>
-                                            <p class="inner">try{</p>
-                                                <p class="inner-1"><fnc>await _.remove</fnc>(todo, {id : <fnc>parseInt</fnc>(req.params.id)});</p>
-                                            <p class="inner-1">res<fnc>.json</fnc>(todo);</p>
+                                            <p class="indent-1">try{</p>
+                                                <p class="indent-2"><fnc>await _.remove</fnc>(todo, {id : <fnc>parseInt</fnc>(req.params.id)});</p>
+                                            <p class="indent-2">res<fnc>.json</fnc>(todo);</p>
 
-                                            <p class="inner">}catch(err){</p>
-                                            <p class="inner-1"><fnc>next</fnc>(err);</p>
-                                            <p class="inner">}</p>
+                                            <p class="indent-2">}catch(err){</p>
+                                            <p class="indent-3"><fnc>next</fnc>(err);</p>
+                                            <p class="indent-2">}</p>
                                        <p>});</p>                                       
                                     </code>
                                 </div>
@@ -1009,7 +1018,7 @@
                         <p>A record in MongoDB is a document, which is a data structure composed of field and value
                             pairs. AKA JSON objects. Typically, MongoDB documents are plain JSON objects. The
                             values of fields may include other documents, arrays, and arrays of documents. </p>
-                            <div class="img-holder"><img src="./doc-image/crud-annotated-document_bakedsvg.png" alt=""></div>
+                        <div class="img-holder"><img src="./doc-image/crud-annotated-document_bakedsvg.png" alt=""></div>
                         <h2 class="underline">Advantages of Documents</h2>
                         <p>The advantages of using documents are:</p>
                         <ol>
@@ -1025,7 +1034,8 @@
                             <li>Indexes support faster queries and can include keys from embedded documents and arrays.</li>
                         </ol>
                         <h5>Rich Query Language</h5>
-                        <p>MongoDB supports a rich query language to support read and write operations (CRUD) as well as:</p>
+                        <p>MongoDB supports a rich query language to support read and write operations (CRUD) as well
+                            as:</p>
                         <ol>
                             <li>Data Aggregation </li>
                             <li>Text Search and Geospatial Queries.</li>
@@ -1036,25 +1046,324 @@
                             <li>Automatic failover and </li>
                             <li>Data redundancy. </li>
                         </ol>
-                        <p>A replica set is a group of MongoDB servers that maintain the same data set, providing redundancy and increasing data availability. </p>
+                        <p>A replica set is a group of MongoDB servers that maintain the same data set, providing
+                            redundancy and increasing data availability. </p>
                         <h5>Horizontal Scalability </h5>
                     </div>
                     <h4>🚖🚖</h4>
                     <div id="using-mongodb-mongoose">
-                        <h1>Using MongoDB and Mongoose (CRUD Operations)</h1>
-                        <p>During the time of this course all CRUD (Create, Read, Update and Delete) operations will be done using 
+                        <h1><i class="fa fa-link"></i> Using MongoDB and Mongoose (CRUD Operations)</h1>
+                        <p>During the time of this course all CRUD (Create, Read, Update and Delete) operations will be
+                            done using
                             Mongoose.
                         </p>
-                        <p>Let's update our <code>german-todo-app</code> to have a database. 🎉🎉 
+                        <p>Let's update our <code>german-todo-app</code> to have a database. 🎉🎉
                             By now we should have been able to setup our MongoDB environment and ready to build.</p>
-                            <p>If that's done follow the steps below to add a database to the application:</p>
-                            <ol>
-                                <li>Start up the MonogoDB server</li>
-                                <li>Start up Node.js Server for <code>german-todo-app</code></li>
-                                <li>Run <code>npm install mongodb mongoose</code> in the terminal</li>
-                                <li>Add the following code to <code>index.js</code></li>
+                        <p>If that's done follow the steps below to add a database to the application:</p>
+                        <ol>
+                            <li>Start up the MonogoDB server</li>
+                            <li>Start up Node.js Server for <code>german-todo-app</code></li>
+                            <li>Run <code>npm install mongodb mongoose</code> in the terminal</li>
+                            <li>Add the following code to <code>index.js</code></li>
+                            <div class="code-area">
+                                <code>
+                                        <p>.....</p>
+                                        <p><const>const</const> MongoClient = <fnc>require</fnc>(<string>'mongoose'</string>)</p>
+                                        <p>....</p>
+        
+                                        <p>MongoClient.<fnc>connect</fnc>(dbURI, {</p>
+                                            <p class="indent-1"><props>useNewUrlParser</props>: <num>true</num>,</p>
+                                            <p class="indent-1"><props>useCreatIndex</props>: <num>true</num></p>
+                                            <p>}, <fnc>(</fnc>err, db <fnc>) => </fnc>{</p>
+                                                <p class="indent-1"><fnc>if</fnc>(err){</p>
+                                                    <p class="indent-2"><props>console</props>.<fnc>log</fnc>(err);</p>
+                                                <p class="indent-1">} <fnc>else</fnc> {</p>
+                                                    <p class="indent-2"><props>console</props>.<fnc>log</fnc>(<string>`connected to <temp>${</temp></string> dbURI <string><temp>}</temp> Name : <temp>${</temp></string> db.Name<string><temp>}</temp></string>`);</p>
+                                                    <p class="indent-1">}</p>
+                                        <p>})</p>
+                                        <p>.... </p>
+                                    </code>
+                            </div>
+                            <p>Awesome!</p>
+                            <li>Add the following code to <code>todo.js</code></li>
+                            <div id="mongodb-routes">
+                                <h1>Adding More Request</h1>
+                                Let's add a <code>post, put, and delete</code> request. And some more middleware
+                                bridges in
+                                the root app.
+                                Install some dependencies before we proceed.
+                                <ol>
+                                    <li>Run <code>npm i body-parser lodash</code></li>
+                                    <li>After a successful installation, modify the following codes:</li>
+                                    <li><code>require</code> dependencies</li>
+                                    <div class="code-area">
+                                        <code>
+                                                    <p><const>const</const> {TodoModel} = <fnc>require</fnc>(<string>'../model/todo'</string>);</p>
+                                                </code>
+                                    </div>
+                                    <!-- GET todo/ -->
+                                    <li><code>GET /todo</code></li>
+                                    <div class="code-area">
+                                        <code>
+                                                <p>route.<fnc>get</fnc>(<string>'/todo'</string>, <fnc>(</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                                    <p><comment><i>//</i></comment></p>
+                                                    <p class="indent-1">try{</p>
+                                                    <p class="indent-2"><const>const</const> todos <fnc>= await</fnc> TodoModel.<fnc>find</fnc>({});</p>
+                                                    <p class="indent-2">res<fnc>.json</fnc>(todos);</p>
+                                                    <p class="indent-1">}catch(err){</p>
+                                                    <p class="indent-3"><fnc>next</fnc>(err);</p>
+                                                    <p class="indent-1">}</p>
+                                               <p>});</p>                                       
+                                            </code>
+                                    </div>
+                                    <!-- GET todo/:id -->
+                                    <li><code>GET /todo/:id</code></li>
+                                    <div class="code-area">
+                                        <code>
+                                                <p>route.<fnc>get</fnc>(<string>'/todo/:id'</string>, <fnc>async (</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                                    <p><comment><i>//</i></comment></p>
+                                                    <p class="indent-1">try{</p>
+                                                        <p class="indent-2"><const>const</const> todosById <fnc>= await </fnc>TodoModel.<const>findOne</const>({id:<fnc>parseInt</fnc>(req.params.id)});</p>
+                                                        <p class="indent-2"><fnc>if</fnc>(!todosById){</p>
+                                                            <p class="indent-3"><fnc> throw new Error</fnc>(<string>`Check id</string><temp>${</temp>req.params.id <temp>}</temp><string>`</string>)</p>
+                                                            <p class="indent-2">}</p>
+                                                    <p class="indent-2">res<fnc>.json</fnc>(todoById);</p>
+                                                    <p class="indent-1">}catch(err){</p>
+                                                    <p class="indent-2"><fnc>next</fnc>(err);</p>
+                                                    <p class="indent-1">}</p>
+                                               <p>});</p>                                       
+                                            </code>
+                                    </div>
+                                    <!-- POST /todo -->
+                                    <li><code>POST /todo</code></li>
+                                    <div class="code-area">
+                                        <code>
+                                                <p>route.<fnc>post</fnc>(<string>'/todo'</string>, <fnc>(</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                                    <p><comment><i>//</i></comment></p>
+                                                    <p class="indent-1">try{</p>
+                                                        <p class="indent-2"><const>const</const> newTodo <fnc>= await </fnc>TodoModel.<const>create</const>(req.body);</p>
+                                                        <p class="indent-2"><fnc>if</fnc>(!newTodo){</p>
+                                                            <p class="indent-3"><fnc> throw new Error</fnc>(<string>`Failed to add`</string>)</p>
+                                                            <p class="indent-2">}</p>
+                                                    <p class="indent-2">res<fnc>.json</fnc>(newTodo);</p>
+                                                    <p class="indent-1">} catch(err){</p>
+                                                    <p class="indent-2"><fnc>next</fnc>(err);</p>
+                                                    <p class="indent-1">}</p>
+                                               <p>});</p>                                       
+                                            </code>
+                                    </div>
+                                    <!-- PUT /todo/:id -->
+                                    <li><code>PUT /todo/:id</code></li>
+                                    <div class="code-area">
+                                        <code>
+                                                <p>route.<fnc>put</fnc>(<string>'/todo/:id'</string>, <fnc>async (</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                                    <p><comment><i>//</i></comment></p>
+                                                    <p class="indent-1">try{</p>
+                                                        <p class="indent-2"><const>const</const> toUpate <fnc>= await </fnc>TodoModel.<const>findOneAndUpdate</const>({id:<fnc>parseInt</fnc>(req.params.id)}, req.body);</p>
+                                                        <p class="indent-2"><fnc>if</fnc>(!toupdate){</p>
+                                                            <p class="indent-3"><fnc> throw new Error</fnc>(<string>`Invalid id: </string><temp>${</temp>req.params.id <temp>}</temp><string>`</string>)</p>
+                                                            <p class="indent-2">}</p>
+                                                            <p class="indent-2"><const>const</const> updated <fnc>= await </fnc>TodoModel.<const>findOne</const>({id: toUpate.id
+                                                            });</p>
+
+                                                    <p class="indent-2">res<fnc>.json</fnc>(updated);</p>
+        
+                                                    <p class="indent-1">}catch(err){</p>
+                                                    <p class="indent-2"><fnc>next</fnc>(err);</p>
+                                                    <p class="indent-1">}</p>
+                                               <p>});</p>                                       
+                                            </code>
+                                    </div>
+                                    <li><code>DELETE /todo/:id</code></li>
+                                    <div class="code-area">
+                                        <code>
+                                            <p>route.<fnc>delete</fnc>(<string>'/todo/:id'</string>, <fnc>async (</fnc>req, res, next<fnc>) =></fnc> {</p>
+                                                <p><comment><i>//</i></comment></p>
+                                                <p class="indent-1">try{</p>
+                                                    <p class="indent-1"><const>const</const> toDelete <fnc>= await </fnc>TodoModel.<const>findOneAndDelete</const>({id:<fnc>parseInt</fnc>(req.params.id)});</p> 
+                                                    <p class="indent-2"><fnc>if</fnc>(!toDelete){</p>
+                                                        <p class="indent-3"><fnc> throw new Error</fnc>(<string>`Invalid id: </string><temp>${</temp>req.params.id <temp>}</temp><string>`</string>)</p>
+                                                        <p class="indent-2">}</p>
+                                                    <p class="indent-2">res<fnc>.json</fnc>(toDelete);</p>
+                                                    <p class="indent-1">}catch(err){</p>
+                                                    <p class="indent-2"><fnc>next</fnc>(err);</p>
+                                                    <p class="indent-1">}</p>
+                                               <p>});</p>                                       
+                                            </code>
+                                    </div>
+                                    <li><code>export module</code></li>
+                                    <div class="code-area"><code>
+                                            <props>module.exports</props> <num>=</num> route;
+                                        </code></div>
+                                </ol>
+                            </div>
+                        </ol>
+                    </div>
+                    <div id="mongoose-schemas">
+                        <p>So far, we’ve added bunch of not working codes that practically destroys all the work
+                            and effort we’ve invested over the last chapters. 🤦‍</p>
+                        <h5>Let’s fix that ⛏🛠: </h5>
+                        <p>To do that we need to understand some concepts and how a database is probably created, and
+                            how tables, row, and columns are been defined. In MongoDB, we can say: how the collections,
+                            fields, and documents are defined. </p>
+                        <p>Earlier, we understood that MongoDB documents database takes a JSON format; but we are yet
+                            to see in action. Schemas, SchemaTypes, and Queries are the building blocks to achieving
+                            that.</p>
+                        <div id="mongoose-schema">
+                            <h1><i class="fa fa-link"></i> Schemas</h1>
+                            <p><code>Mongoose</code> dependency that was installed earlier; and everything in Mongoose
+                                starts with a Schema. A schema is a representation of a plain or theory in the form of
+                                an outline or model. Schemas maps to a MongoDB collection and defines the shape of the
+                                documents within that collection i.e. one schema to one MongoDB collection. </p>
+                            <p>
+                                For those familiar with some other databases like MSSQL, and MYSQL; Schema are much
+                                more like defining a table, defining each field, and assigning specific data types. The
+                                awesomeness about using MongoDB and Mongoose are schemas. The definition system is a
+                                lot like JSON.
+                            </p>
+                            <div class="code-area" id="code-schema-definition">
+                                <code>
+                                        <p>...</p>
+                                        <p><const>const</const> TodoSchema = <fnc>new</fnc> <const>Schema</const>({
+                                           <p class="inner">id:  {</p>
+                                            <p class="indent-2"> type : <string>String,</string></p>
+                                            <p class="indent-2"> unique : <num>true</num></p>
+                                            <p class="inner">},</p>
+                                           <p class="inner">task:  {</p>
+                                            <p class="indent-2"> type : <string>String,</string></p>
+                                            <p class="indent-2"> required : <num>true</num></p>
+                                            <p class="inner">},</p>
+                                           <p class="inner">addDate:  {</p>
+                                            <p class="indent-2"> type : <string>Date,</string></p>
+                                            <p class="indent-2"> default : <string>Date</string>.<fnc>now</fnc>()</p>
+                                            <p class="inner">}</p>
+                                        <p>});</p>
+                                        <p>...</p>
+                                    </code>
+                            </div>
+                            <p>The above code depicts a typical Schema definition. Schemas not only define the
+                                structure of your structure and casting of properties, the also define document
+                                instance methods, stat Model methods, compound indexes and document lifecycle hooks
+                                called middleware. </p>
+                        </div>
+                        <div id="mongoose-schema-types">
+                            <h1><i class="fa fa-link"></i>SchemaTypes</h1>
+                            <p>
+                                SchemaTypes handle definition to path defaults, validation getters, setters,
+                                field delection defaults, for queries, and other general characteristics of Mongoose
+                                document properties.
+                            </p>
+                            <p>You can think of a Mongoose schema as the configuration object for Mongoose model. A
+                                SchemaType is then configuration object for an individual property. A SchemaType says
+                                what type a given path shoulf have, whether it has any getters/setters, and what values
+                                are valid for that path. </p>
+                            <div id="valid-schema-types">
+                                <h2>Valid Schema Types:</h2>
+                                <ul class="dots-li">
+                                    <code>
+                                        <li>String</li>
+                                        <li>Buffer</li>
+                                        <li>Boolean</li>
+                                        <li>Date</li>
+                                        <li>Number</li>
+                                        <li>Schema.Types.Mixed</li>
+                                        <li>Schema.Types.ObjectId</li>
+                                        <li>Schema.Types.Decimalsl128</li>
+                                        <li>[]</li>
+                                        <li>[String]</li>
+                                        <li>[Number]</li>
+                                        <li>[Date]</li>
+                                        <li>[Buffer]</li>
+                                        <li>[Boolean]</li>
+                                        <li>[Schema.Types.Mixed]</li>
+                                        <li>[Schema.Types.ObjectId]</li>
+                                        <li>[[]]</li>
+                                        <li>[[Number]]</li>
+                                        <li>{}</li>
+                                        <li>Map</li>
+                                    </code>
+                                </ul>
+                            </div>
+                            <div id="schema-type-options">
+                                <h2>Schema Type Options</h2>
+                                <p>You can declare a schema type using the type directly, or an object with
+                                    a <code>type</code> property as seen in the above <a href="#code-schema-definition">code.</a>
+                                </p>
+                                <h5>Schema Types <code>options</code></h5>
+                                <ul class="dots-li">
+                                    <li><code>required:</code> boolean or function, if truw adds a required validatior
+                                        for this property.</li>
+                                    <li><code>default:</code> Any or function, sets a default value for the path. If
+                                        the value is a function, the return value of
+                                        the function is used as default.</li>
+                                    <li><code>select:</code>boolean, specifies defautl projections for queries.</li>
+                                    <li><code>validate:</code>function, adds a valiator function for this property</li>
+                                    <li><code>get:</code> function defines a custom getter for this property using
+                                        Object.defineProperty()</li>
+                                    <li><code>set:</code> function defines a custom setter for this property using
+                                        Object.defineProperty()</li>
+                                    <li><code>alias:</code> string, mongoose >= 4.1.0.0 only. Defines a virtual with
+                                        the given name that gets/sets this path.</li>
+                                    <li><code>index:</code> boolean, wherther to an index on this property.</li>
+                                    <li><code>unique:</code> boolean, whether to define a unique index on this
+                                        property.</li>
+                                    <li><code>sparse:</code> boolean, whether to define a sparse index on this
+                                        property. </li>
+                                    Read More on Schema Types Options <a href="https://mongoosejs.com/docs/schematypes.html">Here</a>.
+                                </ul>
+                            </div>
+                            <h4>💪💪Challenge💪💪</h4>
+                            <p>Let's try out our knowledge so far. We will be creating some models for our application.
+                                First, complete the challenge.</p>
+                            <ol type="i">
+                                <li>Create a folder in the root directory <code>./model</code></li>
+                                <li>Create a file with in the <code>./model/todo.model.js</code></li>
+                                <li>Copy the following code <a href="#code-schema-definition">here</a> into the file
+                                    you just created</li>
+                                <li>Add apporiate comments to your code</li>
+                                <li>Commit and push your code to the repo <code>german-todo-app</code></li>
+                                <li>Good Luck 🏆🏆🏆🏆🏆🏆</li>
                             </ol>
-                        
+                        </div>
+                        <div id="mongoose-model">
+                            <h1><i class="fa fa-link"></i>Mongoose Models</h1>
+                            <p>Models are fancy constructors complied from <code>Schema</code> definitions. An instance
+                                of model is called a document.
+                                Models are responsibke for creating and readign documents from the underlying MongoDB
+                                database.</p>
+                            <p>Compling schema are quite easy</p>
+                            <div class="code-area"><code>
+                                <p><const>const</const> TodoModel <fnc>=</fnc> mongoose.<const>model</const>(<string>"todo"</string>, TodoSchema);</p>
+                            </code></div>
+                            <p>A model can become available for use within your application after it's been exported as
+                                a module.
+                                Exporting a module can be done in serval ways but we'll be exporting this way for now,
+                                and the during the time of this course we'll learn more ways to export modules.</p>
+                            <div class="code-area" id="code-export-models"><code>
+                                        <p><props>export</props>.TodoModel <fnc>=</fnc> mongoose.<const>model</const>(<string>"todo"</string>, TodoSchema);</p>
+                                    </code></div>
+                            <p>The first argument is the singular name of the collection the model is for. Mongoose
+                                will automatically look for the plural version of the model name</p>
+                            <p>Thus, for the code above, the model <code>Todo</code> is for the <code>todos </code>
+                                collection in the database. </p>
+                            <p>The <code>.model()</code> function makes a copy of <code>schema</code>. Ensure that
+                                you’ve added everything you want to the <code>schema</code> before calling <code>.model()</code>.
+                                It’s usually a good practice to keep the calling <code>.model()</code> at the bottom of
+                                the code. </p>
+                                <h4>💪💪Challenge💪💪</h4>
+                                <p>Let's update our codes and kick out the errors.</p>
+                                <ol type="i">
+                                    <li>Open up <code>./model/index.js</code></li>
+                                    <li>Require <code>mongoose</code> at the top of tthe file.</li>
+                                    <li>Require <code>{Schema}</code> from the <code>mongoose</code> reference</li>
+                                    <li>Add this <a href="#code-export-model">code</a> to the bottom of the file.</li>
+                                    <li>Start the <code>MongoDB Server</code></li>
+                                    <li>Start <code>Node.js Server</code></li>
+                                    <p>A this point you shouldn't have any error trying your API with <a href="http://">Postman</a></p>
+                                    <li>Good Luck! 🏆🏆🏆🏆🏆🏆🏆</li>
+                                </ol>
+
+                        </div>
                     </div>
                 </div>
             </div>

@@ -87,11 +87,14 @@ temp{
     padding-left:25px; 
 }
 
-.code-area code>p.inner-1{
-    padding-left: 65px;
+.code-area code>p.indent-1{
+    padding-left: 20px;
 }
-.code-area code>p.inner-2{
-    padding-left: 107px;
+.code-area code>p.indent-2{
+    padding-left: 60px;
+}
+.code-area code>p.indent-3{
+    padding-left: 88px;
 }
 
 pre{
@@ -119,6 +122,11 @@ pre{
 
 .img-holder img{
     border-radius: 7px;
+}
+
+.dots-li li{
+    list-style-type: disc;
+    margin: 3px 0px 3px 0px;
 }
 
 
