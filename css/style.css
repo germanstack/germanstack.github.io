@@ -792,12 +792,11 @@ body{
 }
 .feature-section .single-item{
   position: relative;
-  background: #b220db;
+  background: #fff;
   display: block;
   padding: 43px 0px 35px 0px;
   transition: all 500ms ease;
   border: 1px solid #eee;
-  height: 400px;
 }
 
 .feature-style-one .single-item:hover{
@@ -828,7 +827,7 @@ body{
   border-radius: 50%;
 }
 .feature-section .feature-column:nth-child(2) .single-item{
-  background: #4bcf23;
+  background: #fff;
 }
 .feature-section .feature-column:nth-child(3) .single-item{
   background: #218de4;
